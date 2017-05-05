@@ -16,7 +16,7 @@
     </HEAD>
     <BODY>
 	<!--Container total Logueo-->
-	<div class="container" id="logueo" style="display:none">
+	<div class="container" id="logueo" style="display:block">
 	    <!--Row-->
 	    <div class="container-fluid">  		
 		<!--Formulario-->
@@ -61,7 +61,7 @@
 
 	<!--Container Total Categorias-->
 
-	<div class="container">
+	<div class="container" id="tema" style="display:none">
 
 	    <div class="col-md-8">
 
@@ -73,15 +73,30 @@
 		<!--Titulo-->
 		<!--Logeo-->
 		<div class="form-group">
-		    <label for="perfiles" class="control-label">Perfiles:</label>
-		    <div class="col-sm-6">
+		    <label for="perfiles" class="control-label col-sm-3">Perfiles:</label>
+		    <div class="col-sm-3">
 			<select class="form-control" id="perfiles">
+				
+			</select>
+		    </div>
+		    
+		    <label for="categorias" class="control-label col-sm-3">Categorias:</label>
+		    <div class="col-sm-3">
+			<select class="form-control" id="categorias">
+				
+			</select>
+		    </div>
+		    
+		    <label for="subcategorias" class="control-label col-sm-3">Sub-Categorias:</label>
+		    <div class="col-sm-3">
+			<select class="form-control" id="subcategorias">
 				
 			</select>
 		    </div>
 		</div>
 		
 		<button id="access" class="btn btn-danger col-md-offset-2">Iniciar Foro</button>
+		<button id="closeSession" class="btn btn-danger col-md-offset-2">Cerra Sessión</button>
 	    </div>
 	</div>
 
