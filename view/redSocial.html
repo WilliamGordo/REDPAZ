@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>RedPAZ</title>
+        <!--Meta datos-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Booostrap-Jquery-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../js/ForoChat.js"></script>
+        <!--Css-->
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+
+	<!--Nav-->
+        <nav class="navbar  navbar-inverse">vio
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                          
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="../Images/Logo1.png" width="90" height="90" class="d-inline-block align-top logo" alt="">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <!--Buscador-->
+                    <form class="navbar-form navbar-right">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" id="Buscador" required>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" id="Search">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--Buscador-->      
+                    <ul class="nav navbar-nav navbar-right"> 
+                        <!--Cart--> 
+                        <li class="dropdown">
+			    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user" href="javascript:void(0)"></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a id="misForos" href="javascript:void(0)">Mis Foros</a>
+                                </li> 
+                            </ul>                           
+                        </li>
+                        <!--Cart--> 
+                        <li><a href="javascript:void(0)" id="cerrarSesion"><span class="glyphicon glyphicon-user"></span>Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--Nav-->
+	
+        <br>
+        <br>
+	
+	
+	<!--Container Total Categorias-->
+	<div class="container-fluid contenido">    
+            <div class="row">
+                <!--Tema-->
+                <div class="col-md-2 categ">
+                    <h2 class="text-center"><strong>Tema</strong></h2>
+		    
+		    <div class="form-group">
+			<label for="categorias" class="control-label col-sm-12">Categorias:</label>
+			<div class="col-sm-12">
+			    <select class="form-control" id="categorias">
+
+			    </select>
+			</div>
+		    </div>
+		    
+		    <div class="form-group">
+			<label for="subcategorias" class="control-label col-sm-12">Sub-Categorias:</label>
+			<div class="col-sm-12">
+			    <select class="form-control" id="subcategorias">
+
+			    </select>
+			</div>
+		    </div>
+		    
+		    <div class="form-group col-sm-12">
+			<button type="button" id="access" class="btn btn-danger btn-block">Iniciar Red Social</button>
+		    </div>
+                </div>
+                <!--Tema-->
+                <!--Productos por Categorias-->
+                <div class="col-md-10">
+                    <div class="row">
+                     <h2 class="text-center"><strong>Platos</strong></h2>
+                        <div class="tab-content scrollbar" id="productoCategoria" >
+                            <!--Productos por categoria-->      
+                        </div>
+                    </div>
+                </div>
+                <!--Productos por Categorias-->
+            </div>
+        </div>
+	
+
+	<!--Fin Container Total Categorias-->
+	
+        <!--Acordeon-->
+        <div class="container" style="display:none">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">CREDENCIALES USUARIO</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p>Para confirmar sus datos, se le presentan sus credenciales de usuario para continuar con la donacion.</p>
+                            <div class="table-responsive">          
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>                                           
+                                            <th>Nombre</th>
+                                            <th>Apellido</th> 
+                                            <th>Correo</th>
+                                            <th>fecha</th>                                                                                       
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Francisco</td>
+                                            <td>Martinez</td>
+                                            <td>martinez@hotmail.com</td>
+                                            <td>4 de mayo 2017</td>                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="panel-footer">
+                            <strong>Si sus datos no son correctos, contactese con nosotros.</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">LISTA PRODUCTOS</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p>En la siguiente tabla encontrara todo su pedido detallado:</p>
+                            <div class="table-responsive">          
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>                                           
+                                            <th width="25%">Nombre</th>
+                                            <th width="20%">Imagen</th> 
+                                            <th width="10%">Cantidad</th>
+                                            <th width="15%">Valor Unitario</th>
+                                            <th width="20%">Valor Total</th>
+                                            <th width="10%">Operacion</th>                                                                                       
+                                        </tr>
+                                    </thead>
+                                    <tbody id="prods">
+
+                                    </tbody>
+				    <tfoot>
+					<tr>                                           
+                                            <td colspan="4">Total Compra: </td>
+                                            <td colspan="2" id="valorCompra">$ 0</td>
+                                        </tr>
+				    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <strong>Consulte y modifique su pedido.</strong>
+                        </div>
+                    </div>
+                </div>               
+            </div> 
+        </div>
+
+        <!--Fin Acordeon-->
+        <!--Boton Confirmacion-->
+
+	<div class="col-md-8 col-md-offset-10" style="display:none">
+	    <button class="btn btn-info" id="Confirmacion">Confirmar Donacion</button>
+	</div>
+        <br>
+        <br>
+        <!--Fin Boton Confirmacion-->
+
+	<!--Modal Factura-->
+
+	<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		    <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" id="closeFactura">&times;</button>
+			<h4 class="modal-title">Factura</h4>
+		    </div>
+		    <div class="modal-body">
+			<table class="table table-bordered">
+			    <thead>
+				<tr>
+				    <th colspan="2">William Gonzalez</th>
+				    <th colspan="2" id="dateFactura">2017-05-12</th>
+				</tr>
+				<tr>
+				    <th width="40%">Plato</th>
+				    <th width="20%">Cantidad</th>
+				    <th width="20%">Valor Unt</th>
+				    <th width="20%">Valor Total</th>
+				</tr>
+			    </thead>
+			    <tbody id="platosFactura">
+				
+			    </tbody>
+			    <tfoot>
+				<tr>
+				    <td colspan="3">Total</td>
+				    <td id="valorTFactura">$ 0</td>
+				</tr>
+			    </tfoot>
+			</table>
+		    </div>
+		    <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+
+	    </div>
+	</div>
+
+	<!--Fin Modal Factura-->
+
+        <!--Footer-->
+        <footer class="container-fluid text-center">  
+            <p><strong>Hecho por:</strong> William Gonzalez Lider Prototipo</p> 
+        </footer>
+        <!--Footer-->
+
+
+
+    </body>
+</html>
