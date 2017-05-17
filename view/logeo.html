@@ -8,43 +8,49 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--Boostrap-Jquery-->
 	<link rel="stylesheet" href="../Libraries/bootstrap/css/bootstrap.min.css">
-	<script src="../Libraries/Jquery/jquery-3.2.1.min.js"></script>
-	<script src="../Libraries/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	<!--<script src="../Libraries/Jquery/jquery-3.2.1.min.js"></script>
+	<script src="../Libraries/bootstrap/js/bootstrap.min.js"></script>-->
 	<script src="../js/usuario.js"></script>
 	<!--Css-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/style.css">
     </HEAD>
     <BODY>
 	<!--Container total Logueo-->
-	<div class="container" id="logueo" style="display:block">
+	<div class="container" id="logueo">
 	    <!--Row-->
 	    <div class="container-fluid">  		
 		<!--Formulario-->
-		<div class="col-md-4" id="Formulario">
+		<div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2" id="Formulario">
 		    <!--Titulo-->
 		    <div class="row">
-			<div class="col-md-8 col-md-offset-2 col-xs-12  col-sm-6 col-sm-offset-3">
-			    <img src="../Images/Logo.PNG" id="logo" class="img-responsive">
+			<div>
+			    <img src="../Images/Logo1.PNG" id="logo" class="img-responsive">
 			</div>                             
 		    </div>  
 		    <!--Titulo-->
 		    <!--Logeo-->
-		    <div class="form-group">
-			<label for="email" class="control-label">Email address:</label>
-			<div class="col-sm-6">
-			    <input type="email" class="form-control" placeholder="Correo" id="email">
+		    <div class="row" id="Form">
+                        <div class="col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-3 col-xs-12">
+			    <form>
+				<div class="form-group">
+				    <label for="email" class="control-label col-sm-12">Email address:</label>
+				    <div class="col-sm-12">
+					<input type="email" class="form-control" placeholder="Correo" id="email">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="pwd" class="control-label col-sm-12">Password:</label>
+				    <div class="col-sm-12">
+					<input type="password" class="form-control" placeholder="Contraseña" id="pwd">
+				    </div>
+				</div>
+				<button type="button" id="access" class="btn btn-danger btn-block">Login</button>
+			    </form>
 			</div>
 		    </div>
-		    <div class="form-group">
-			<label for="pwd" class="sr-only">Password:</label>
-			<div class="col-sm-6">
-			    <input type="password" class="form-control" placeholder="Contraseña" id="pwd">
-			</div>
-		    </div>
-		    <div class="checkbox">
-			<label><input type="checkbox"> Remember me</label>
-		    </div>
-		    <button id="access" class="btn btn-danger col-md-offset-2">Login</button>
 		    <!--Ingresar a otra cuenta modal-->
 		    <!--<div class="text-center">
 			<a href="javascript:void(0)" data-toggle="modal" data-target="#registro">Regístrate Ya!!!</a>
@@ -59,46 +65,4 @@
 	</div>
 	<!--Fin Container Total  Logueo-->
 
-	<!--Container Total Categorias-->
-
-	<div class="container" id="tema" style="display:none">
-
-	    <div class="col-md-8">
-
-		<div class="row">
-		    <div class="col-md-8 col-md-offset-2 col-xs-12  col-sm-6 col-sm-offset-3">
-			<img src="../Images/Logo.PNG" id="logo" class="img-responsive">
-		    </div>                             
-		</div>  
-		<!--Titulo-->
-		<!--Logeo-->
-		<div class="form-group">
-		    <label for="perfiles" class="control-label col-sm-3">Perfiles:</label>
-		    <div class="col-sm-3">
-			<select class="form-control" id="perfiles">
-				
-			</select>
-		    </div>
-		    
-		    <label for="categorias" class="control-label col-sm-3">Categorias:</label>
-		    <div class="col-sm-3">
-			<select class="form-control" id="categorias">
-				
-			</select>
-		    </div>
-		    
-		    <label for="subcategorias" class="control-label col-sm-3">Sub-Categorias:</label>
-		    <div class="col-sm-3">
-			<select class="form-control" id="subcategorias">
-				
-			</select>
-		    </div>
-		</div>
-		
-		<button id="access" class="btn btn-danger col-md-offset-2">Iniciar Foro</button>
-		<button id="closeSession" class="btn btn-danger col-md-offset-2">Cerra Sessión</button>
-	    </div>
-	</div>
-
-	<!--Fin Container Total Categorias-->
     </BODY>

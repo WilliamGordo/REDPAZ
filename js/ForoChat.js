@@ -1,84 +1,29 @@
 $(document).ready(function () {
     //Acciones que se ejecutan apenas se abre la pÃ¡gina...
-    //cargarPerfiles();
-    //cargarCategorias();
+    cargarDatos();
+    cargarCategorias();
     //Acciones cuando se generan eventos.....
-    eventoAccess();
+    eventoClosedSession();
     //Acciones a ejecutar cada cierto tiempo
+    //setInterval(validateSession(), 1200000);
 });
 
-function eventoAccess() {
-    //Comienza peticion via ajax..
-    $('#access').on('click', function () {
-
-	var email	= $('#email').val();
-	var password	= $('#pwd').val();
-	   
-	if(email.length > 0 && password.length > 0){
-	    
-	    $.ajax({
-		url: '../controller/controlador.php',
-		data: {accion: 1, email: email, pass: password},
-		type: 'POST',
-		dataType: 'json',
-		success: function (dataAccess){
-
-		    if (dataAccess.access == 1) {
-			alert('Acceso Denegado');
-		    } else {
-			localStorage.setItem("usuario", JSON.stringify(dataAccess));
-			location.href ='redSocial.html';
-		    }
-		    
-		    //Se muestran los catalogos en el index
-
-		},
-		error: function (xhr, status) {
-		    alert('Usuario y Contraseña no Coinciden');
-		}
-
-	    });
-	    
-	}else{
-	    alert('Informaci&oacute;n Incompleta');
-	}
-	
-
-    });
-
-    //Termina peticion via ajax..
+function cargarDatos(){
+    var usuario = localStorage.getItem('usuario');
+    
+    if(usuario.length > 0){
+	usuario = JSON.parse(usuario);
+	$('#user').html('<span class="glyphicon glyphicon-user"></span>' + usuario.nombres + ' ' + usuario.apellidos);
+    }
 }
 
 function eventoClosedSession() {
     //Comienza peticion via ajax..
-    $('#closeSession').on('click', function () {
+    $('#cerrarSesion').on('click', function () {
 
-	$('#tema').hide();
-	$('#logueo').show();
+	localStorage.setItem("usuario", '');
+	location.href ='logeo.html';
 	
-	/*Cierre de sesion*/
-//	$.ajax({
-//	    url: '../controller/controlador.php',
-//	    data: {accion: 1, email: email, pass: password},
-//	    type: 'POST',
-//	    dataType: 'JSON',
-//	    success: function (dataAccess) {
-//		if (dataAccess.access == 1) {
-//		    alert('Acceso Satisfactorio');
-//		    $('#logueo').hide();
-//		    $('#tema').show();
-//		} else {
-//		    alert('Acceso Denegado');
-//		}
-//		//Se muestran los catalogos en el index
-//
-//	    },
-//	    error: function (xhr, status) {
-//		alert('Usuario y ContraseÃ±a no Coinciden');
-//	    }
-//
-//	});
-
     });
 
     //Termina peticion via ajax..
