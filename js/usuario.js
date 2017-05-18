@@ -11,25 +11,25 @@ function eventoAccess() {
     //Comienza peticion via ajax..
     $('#access').on('click', function () {
 
-	var email	= $('#email').val();
-	var password	= $('#pwd').val();
-	   
-	if(email.length > 0 && password.length > 0){
-	    
+	var email = $('#email').val();
+	var password = $('#pwd').val();
+
+	if (email.length > 0 && password.length > 0) {
+
 	    $.ajax({
 		url: '../controller/controlador.php',
 		data: {accion: 1, email: email, pass: password},
 		type: 'POST',
 		dataType: 'json',
-		success: function (dataAccess){
+		success: function (dataAccess) {
 
 		    if (dataAccess.access == 1) {
 			alert('Acceso Denegado');
 		    } else {
 			localStorage.setItem("usuario", JSON.stringify(dataAccess));
-			location.href ='redSocial.html';
+			location.href = 'redSocial.html';
 		    }
-		    
+
 		    //Se muestran los catalogos en el index
 
 		},
@@ -38,11 +38,11 @@ function eventoAccess() {
 		}
 
 	    });
-	    
-	}else{
+
+	} else {
 	    alert('Informaci&oacute;n Incompleta');
 	}
-	
+
 
     });
 
@@ -55,7 +55,7 @@ function eventoClosedSession() {
 
 	$('#tema').hide();
 	$('#logueo').show();
-	
+
 	/*Cierre de sesion*/
 //	$.ajax({
 //	    url: '../controller/controlador.php',
@@ -110,10 +110,10 @@ function cargarCategorias() {
 	data: {accion: 3},
 	dataType: "json",
 	success: function (d) {
- 	   $.each(d, function (index, item) {
+	    $.each(d, function (index, item) {
 		$("#categorias").append("<option value='" + index + "'>" + item + "</option>");
 	    });
-	    
+
 	    cargarSubCategorias();
 	},
 	error: function (d) {
@@ -125,14 +125,14 @@ function cargarCategorias() {
 
 function cargarSubCategorias() {
     var id_categoria = $('#categorias').val();
-    
+
     $.ajax({
 	method: "POST",
 	url: "../controller/controlador.php",
 	data: {accion: 4, categoria: id_categoria},
 	dataType: "json",
 	success: function (d) {
- 	   $.each(d, function (index, item) {
+	    $.each(d, function (index, item) {
 		$("#subcategorias").append("<option value='" + index + "'>" + item + "</option>");
 	    });
 	},
