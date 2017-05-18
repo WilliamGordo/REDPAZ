@@ -59,18 +59,18 @@
             </div>
         </nav>
         <!--Nav-->
-	
+
         <br>
         <br>
-	
-	
+
+
 	<!--Container Total Categorias-->
 	<div class="container-fluid contenido">    
             <div class="row">
                 <!--Tema-->
                 <div class="col-md-2 categ">
                     <h2 class="text-center"><strong>Tema</strong></h2>
-		    
+
 		    <div class="form-group">
 			<label for="categorias" class="control-label col-sm-12">Categorias:</label>
 			<div class="col-sm-12">
@@ -79,7 +79,7 @@
 			    </select>
 			</div>
 		    </div>
-		    
+
 		    <div class="form-group">
 			<label for="subcategorias" class="control-label col-sm-12">Sub-Categorias:</label>
 			<div class="col-sm-12">
@@ -88,28 +88,79 @@
 			    </select>
 			</div>
 		    </div>
-		    
+
 		    <div class="form-group col-sm-12">
-			<button type="button" id="access" class="btn btn-danger btn-block">Iniciar Red Social</button>
+			<button type="button" id="setTema" class="btn btn-danger btn-block">Iniciar Red Social</button>
 		    </div>
                 </div>
                 <!--Tema-->
                 <!--Productos por Categorias-->
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <div class="row">
-                     <h2 class="text-center"><strong>Platos</strong></h2>
+			<h2 class="text-center"><strong>Foro</strong></h2>
+			<div class="form-group col-sm-12" id="btnNewForo" style="display:none">
+			    <button type="button" id="newForo" class="btn btn-danger">Nuevo Foro</button>
+			</div>
+			
+			<!--Modal Factura-->
+
+			<div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+				    <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" id="closeFactura">&times;</button>
+					<h4 class="modal-title">Foro</h4>
+				    </div>
+				    <div class="modal-body">
+					<div class="row">					    
+					    <label class="control-label col-md-12">Titulo </label>
+					    <div class="col-md-12">
+						<input type="text" class="form-control" id="tituloForo">
+					    </div>
+					</div>
+					
+					<div class="row">					    
+					    <label class="control-label col-md-12">Observaciones </label>
+					    <div class="col-md-12">
+						<textarea class="form-control" id="observacionesForo"></textarea>
+					    </div>
+					</div>
+				    </div>
+				    <div class="modal-footer">
+					<button type="button" class="btn btn-success" id="createdForo">Crear Foro</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				    </div>
+				</div>
+
+			    </div>
+			</div>
+
+			<!--Fin Modal Factura-->
+			
                         <div class="tab-content scrollbar" id="productoCategoria" >
+			    <h3>No ha seleccionado una tem&aacute;tica</h3>
                             <!--Productos por categoria-->      
                         </div>
+                    </div>
+                </div>
+		
+		<div class="col-md-2">
+                    <div class="row"  style="display:none" id="forosCategoriaT">
+			<h2 class="text-center"><strong>Foros</strong></h2>
+			<div class="list-group text-center" id="forosCategoria"> 
+			    <!--categorias-->           
+			</div>       
                     </div>
                 </div>
                 <!--Productos por Categorias-->
             </div>
         </div>
-	
+
 
 	<!--Fin Container Total Categorias-->
-	
+
         <!--Acordeon-->
         <div class="container" style="display:none">
             <div class="panel-group" id="accordion">
@@ -226,7 +277,7 @@
 				</tr>
 			    </thead>
 			    <tbody id="platosFactura">
-				
+
 			    </tbody>
 			    <tfoot>
 				<tr>

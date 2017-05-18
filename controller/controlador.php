@@ -3,6 +3,8 @@
 //Se reciben todas las peticiones ajax y se responden
 //Llamada del core del negocio
 include_once "../models/ImplementUsuario.php";
+include_once "../models/ImplementCategorias.php";
+include_once "../models/ImplementForo.php";
 //1..Recibe la peticion de ajax
 $data = $_POST['accion'];
 //2..Revisa que caso es
@@ -17,7 +19,16 @@ switch ($data) {
 	getCategorias();
 	break;
     case 4:
-	getCategorias($_POST['categoria']);
+	getSubCategorias($_POST['categoria']);
+	break;
+    case 5:
+	setUsuarioActivo($_POST['user']);
+	break;
+    case 6:
+	getForoCategoria($_POST['categoria']);
+	break;
+    case 7:
+	setForo($_POST['observaciones'], $_POST['user'], $_POST['categoria'], $_POST['title']);
 	break;
     default:
 	echo "No se ha hecho ninguna peticion";
@@ -51,38 +62,77 @@ function getPerfiles() {
 
 function getCategorias() {
 
-    $json2 = array('1' => 'Territorial', '2' => 'Tecnológias e Innovadoras', '3' => 'Educación', '4' => 'Salud', '5' => 'Alimentos');
+    $categoriasI = new ImplementCategorias();
+    $datos = $categoriasI->getCategorias();
+
+    if($datos === false){
+	$datos = array('Error' => 0);
+    }
+    
     header('Content-type: application/json; charset=utf-8');
 
-    echo json_encode($json2);
+    echo json_encode($datos);
     die();
 }
 
 function getSubCategorias($id_categoria) {
 
-    switch ($id_categoria) {
-	case 1:
-	    $json2 = array('1' => 'Relación campo -- ciudad', '2' => 'Las ciudades inclusivas y sostenibles');
-	    break;
-	case 2:
-	    $json2 = array('1' => 'Lucha contra la corrupción', '2' => 'Lucha contra las minas quiebra patas');
-	    break;
-	case 3:
-	    $json2 = array('1' => 'Material inclusivo para todos', '2' => 'Población desplazada - aprendizaje b-learning', '3' => 'Población que entrega las armas  -- aprendizaje b-learning', '4' => 'Formas de acceso, la calidad y la pertinencia');
-	    break;
-	case 4:
-	    $json2 = array('1' => 'Carnetización y atención para todos', '2' => 'Diagnósticos para todos', '3' => 'Prevención de la transmisión de posibles enfermedades');
-	    break;
-	case 5:
-	    $json2 = array('1' => 'Acces para todos de una alimentación sana y suficiente', '2' => 'Seguridad en la alimentación para todos', '3' => 'Agregación de valr a los productos');
-	    break;
-	default:
-	    $json2 = array('1' => 'Relación campo -- ciudad', '2' => 'Las ciudades inclusivas y sostenibles');
-	    break;
+    $categoriasI = new ImplementCategorias();
+    $datos = $categoriasI->getCategorias($id_categoria);
+    
+    if($datos === false){
+	$datos = array('Error' => 0);
     }
 
     header('Content-type: application/json; charset=utf-8');
 
-    echo json_encode($json2);
+    echo json_encode($datos);
     die();
+}
+
+function setUsuarioActivo($id_user){
+    
+    $usuarioImple   = new ImplementUsuario();
+    $usuarioImple->setUsuarioActivo($id_user, 0, '0000-00-00');
+    
+    header('Content-type: application/json; charset=utf-8');
+    
+    echo json_encode(array('access' => '1'));
+    die();
+}
+
+function getForoCategoria($categoria){
+    
+    $foroI = new ImplementForo();
+    
+    $foros = $foroI->getForoByCategoria($categoria);
+
+    if(empty($foros)){
+	$foros['access'] = 1;
+    }
+    //2. Se pasa a JSON para enviarla de nuevo al servidor..
+    header('Content-type: application/json; charset=utf-8');
+
+    echo json_encode($foros);
+    die();
+    
+}
+
+function setForo($observaciones, $user, $categoria, $titulo){
+    
+    $foroI = new ImplementForo();
+    
+    $bool = $foroI->addForo($observaciones, $user, $categoria, $titulo);
+    
+    if($bool === true){
+	$json = array('access' => 1);
+    }else{
+	$json = array('access' => 0);
+    }
+    
+    header('Content-type: application/json; charset=utf-8');
+
+    echo json_encode($json);
+    die();
+    
 }
