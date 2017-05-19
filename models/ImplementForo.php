@@ -21,7 +21,7 @@ class ImplementForo{
     function getForoByCategoria($id_categoria) {
 
 	$auxDao	    = new DAO();
-	$consulta   = $auxDao->consultar("foro", "id > 0 AND disabled = 0 AND tema = " . $id_categoria, "*");
+	$consulta   = $auxDao->consultar("foro", "id > 0 AND disabled = 0 AND tema = " . $id_categoria, "*", 'id ASC');
 	$listaForos  = array();
 	$auxDao->close();
 	
@@ -64,5 +64,35 @@ class ImplementForo{
 	}
 	
     }
-    
+
+    function getForo($id_foro){
+	
+	$auxDao	    = new DAO();
+	$consulta   = $auxDao->consultar("foro", "disabled = 0 AND id  = " . $id_foro, "*", 'id ASC');
+	$auxDao->close();
+	
+	if (!empty($consulta)) {
+	    $foro = null;
+	    while ($row = $consulta->fetch()) {
+		
+		$categoriaI = new ImplementCategorias();
+		$usuarioI   = new ImplementUsuario();
+		
+		$this->foro->setId($row['id']);
+		$this->foro->setTema($categoriaI->getCategoria($row['tema']));
+		$this->foro->setTitulo($row['titulo']);
+		$this->foro->setObservaciones($row['observaciones']);
+		$this->foro->setCreated_by($usuarioI->getUsuariosById($row['created_by']));
+		$this->foro->setCreated($row['created']);
+		$this->foro->setDisabled($row['disabled']);
+		$foro = $this->foro;
+
+		break;
+	    }
+	    return get_object_vars($foro);
+	} else {
+	    return null;
+	}
+	
+    }
 }
