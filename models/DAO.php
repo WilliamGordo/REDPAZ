@@ -48,7 +48,7 @@ class DAO {
 
 	$consulta = "SELECT " . $select . " FROM " . $nombreTabla . " " . $inner . " WHERE " . $condicionales . " ";
 	if ($order != "") {
-	    $consulta .= $order;
+	    $consulta .= ' ORDER BY ' . $order;
 	}
 
 	$result = $this->connection->query($consulta);

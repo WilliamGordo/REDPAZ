@@ -5,6 +5,7 @@
 include_once "../models/ImplementUsuario.php";
 include_once "../models/ImplementCategorias.php";
 include_once "../models/ImplementForo.php";
+include_once "../models/ImplementForoMensajes.php";
 //1..Recibe la peticion de ajax
 $data = $_POST['accion'];
 //2..Revisa que caso es
@@ -29,6 +30,12 @@ switch ($data) {
 	break;
     case 7:
 	setForo($_POST['observaciones'], $_POST['user'], $_POST['categoria'], $_POST['title']);
+	break;
+    case 8:
+	addComent($_POST['observaciones'], $_POST['user'], $_POST['id_foro']);
+	break;
+    case 9:
+	getComents($_POST['foro']);
 	break;
     default:
 	echo "No se ha hecho ninguna peticion";
@@ -133,6 +140,42 @@ function setForo($observaciones, $user, $categoria, $titulo){
     header('Content-type: application/json; charset=utf-8');
 
     echo json_encode($json);
+    die();
+    
+}
+
+function addComent($comentario, $id_user, $id_foro){
+    
+    $foroMensajesI = new ImplementForoMensajes();
+    
+    $bool = $foroMensajesI->addForoMensaje($comentario, $id_user, $id_foro);
+    
+    if($bool === true){
+	$json = array('access' => 1);
+    }else{
+	$json = array('access' => 0);
+    }
+    
+    header('Content-type: application/json; charset=utf-8');
+
+    echo json_encode($json);
+    die();
+    
+}
+
+function getComents($id_foro){
+    
+    $foroMensajesI = new ImplementForoMensajes();
+    
+    $bool = $foroMensajesI->getMensajeByForo($id_foro);
+    
+    if(empty($bool)){
+	$bool = array('access' => 1);
+    }
+    
+    header('Content-type: application/json; charset=utf-8');
+
+    echo json_encode($bool);
     die();
     
 }
